@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern movie site</title>
+    <!-- tailwind css link -->
+    <link rel="stylesheet" href="../src/build.css">
+    <!-- favicon link -->
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+    <!-- font awosome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+        /* movie suggestion skeleton */
+        @keyframes placeHolderShimmer {
+            0% {
+              background-position: -800px 0
+            }
+            100% {
+              background-position: 800px 0
+            }
+        }
+
+        .animated-background {
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: placeHolderShimmer;
+            animation-timing-function: linear;
+            background-color: #ffffff;
+            background: linear-gradient(to right, #535252 8%, #3e3e3e 18%, #535252 33%);
+            background-size: 800px 104px;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-slate-950">
+    <!-- header --> 
+    <header class="sticky top-5 z-40">
+        <!-- nav section -->
+        <nav class=" h-[10vh] flex justify-center mt-5">
+            <!-- parent div -->
+            <div class="flex justify-around max-sm:justify-between max-sm:px-4 items-center h-[10vh] w-[90%] max-[532px]:w-full max-[532px]:rounded-none h-[62px] bg-[#1c1c84] max-[405px]:-skew-x-0 -skew-x-12 bg-gradient-to-tr from-purple-500 via-pink-500 to-red-500 max-[370px]:px-1" id="navbar">
+                <div>
+                    <a href="./index.html">
+                        <img loading="lazy" src="../logo.png" alt="site logo" class="text-black max-[340px]:w-10 max-[340px]:h-10 rounded-full w-14 h-14 dark:text-[#f5deb3]">
+                    </a>
+                </div>
+                <div>
+                    <div>
+                        <ul class="max-[960px]:hidden flex list-none space-x-4 text-black dark:text-[#f5deb3]">
+                            <li>
+                                <a href="./index.html">Home</a>
+                            </li>
+                            <li>
+                                <button id="popular_search" class="active:scale-50">Popular</button>
+                            </li>
+                            <li>
+                                <button id="top-rated_search" class="active:scale-50">Top Rated</button>
+                            </li>
+                            <li>
+                                <button id="upcoming_search" class="active:scale-50">Upcoming</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- search bar -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative flex justify-between items-center ml-5 bg-white rounded-xl">
+                        <i class="fa-solid fa-magnifying-glass ml-2 mr-2"></i>
+                        <input type="search" name="search" id="content-search" class=" h-10 rounded-xl outline-none text-black max-sm:w-20">
+                    </div>
+                    <button type="submit" id="searchBtn" class="text-black dark:text-[#f5deb3] bg-blue-500 active:scale-50 px-4 py-2 text-white rounded-xl">Search</button>
+
+                    <!-- dark mode -->
+                    <div class="flex flex-col justify-center items-center"> 
+
+                        <button class="bg-blue-500 py-2 px-4 max-sm:px-0 max-sm:py-0 rounded-xl max-sm:rounded-full active:scale-50 text-base text-black dark:text-[#f5deb3] max-sm:w-10 max-sm:h-10 max-sm:flex max-sm:justify-center max-sm:items-center max-[405px]:fixed max-[405px]:right-5 max-[405px]:top-[85vh]" id="dark_hover">
+                            <span class="max-sm:hidden">Preference Mode</span>
+                            <span>
+                                <img src="../images/mode.png" alt="modes" class="hidden max-sm:block w-5 h-5 rounded-full">
+                            </span>
+                        </button>
+
+                        <ul class="bg-blue-950 absolute w-[90px] max-sm:w-[60px] py-5 flex flex-col justify-center items-center space-y-3 rounded-lg z-50 top-12 hidden max-[405px]:mt-[53vh] max-[405px]:right-3" id="ul_display">
+                            <li>
+                                <button id="light-icon" class=" hover:bg-blue-900 p-2 rounded-lg">
+                                    <img src="../images/light mode.png" class="max-sm:w-6 max-sm:h-6 max-sm:rounded-full w-10 h-10" alt="light-mode">
+                                </button>
+                            </li>
+                            <li>
+                                <button id="dark-icon" class="hover:bg-blue-900 p-2 rounded-lg">
+                                    <img src="../images/dark mode.png" alt="dark-mode" class="w-10 h-10 max-sm:w-6 max-sm:h-6 max-sm:rounded-full">
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- main -->
+    <main>
+        <!-- slider -->
+        <div class="flex justify-center mt-5">
+            <div class="w-[90%] max-[532px]:w-full max-[532px]:rounded-none rounded-lg overflow-hidden">
+                <!-- image Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper" id="swipper_parent"> 
+                        <!-- img temp for slider -->
+                        <template id="swiper_temp">
+                            <div class="swiper-slide">
+                                <img src="https://static0.colliderimages.com/wordpress/wp-content/uploads/the-avengers-movie-poster-banners-03-600x239.jpg" loading="lazy" alt="genres-img" class="w-[1367px] h-[545px] object-cover" id="genre_img_slider">
+                            </div>
+                        </template>
+                    </div>
+                    <!-- swiper buttons -->
+                    <!-- <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <!-- movie genre -->
+        <div class="flex justify-center mt-5">
+            <div class="w-[90%] max-[532px]:w-full">
+                <!-- genre title -->
+                <div>
+                    <h1 class="text-center text-black dark:text-[#f5deb3] text-2xl font-bold">Movie Genre</h1>
+                </div>
+                <div class="flex justify-center p-5 max-[365px]:p-1">
+                    <!-- clone cards parent div -->
+                    <div id="genre_parent_cont" class="flex relative flex-wrap justify-center items-center space-x-4 space-y-4 max-[355px]:space-x-2">
+                        
+                    </div>
+                    <!-- card template -->
+                    <template id="genre_template">
+                        <div class="flex mt-[16px] ml-[16px] relative flex-col justify-center items-center temp_cont active:scale-50">
+                            <img src="../images/adventure.jpg" alt="genres" id="genre_card" loading="lazy" class="rounded-lg brightness-50 w-32 h-[85px] max-[365px]:w-24 max-[365px]:h-[53px] object-cover">
+                            <p class="absolute text-white text-center text-xl max-[365px]:text-sm p-2" id="genre_name">dummy text</p>
+                        </div>
+                    </template>
+                </div>    
+            </div>
+        </div>
+        <!-- movie suggestion -->
+        <div class="flex flex-col justify-center items-center">
+            <div class="mt-20 w-[90%] max-[450px]:w-full">
+                <h1 class="text-black dark:text-[#f5deb3] text-2xl font-bold text-center">Movie Suggestion</h1>
+
+                <!-- for skeletons -->
+                <div class="flex flex-wrap justify-center items-center space-y-10 space-x-10 -mt-36 py-32" id="skeleton_parent"></div>
+                
+                <!-- parent div of suggestions-->
+                <div class="flex flex-wrap justify-center items-center" id="suggestion_parent">
+                    
+                </div>
+                <!-- template for suggestion cards -->
+                <template id="suggestion_temp">
+                    <div class="flex items-center justify-center my-24 mx-5 max-[320px]:mx-3" id="movieCard_temp">
+                        <div class="max-[450px]:h-[168px] max-[450px]:w-[120px] h-52 w-40 rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+                            <div class="flex h-full w-full items-center justify-center bg-gray-800 back">
+                                <!-- card img -->
+                                <img src="../images/crime.jpg" alt="movie img" loading="lazy" id="suggestion_img" class="object-cover h-full w-full">
+                            </div>
+                            <div class="mt-5">
+                                <!-- release date -->
+                                <p class="dark:text-white mt-1 mb-1" id="rel_date">0/22/2222</p>
+                                <!-- card text -->
+                                <p class="text-black dark:text-white font-serif font-normal overflow-hidden text-ellipsis" id="suggestion_p" style="display: -webkit-box; 
+                                -webkit-box-orient: vertical; 
+                                -webkit-line-clamp: 5; ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum consequatur alias corrupti explicabo iure minus!</p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <!-- no result text -->
+                <div>   
+                    <p class="dark:text-white mt-10 text-center text-2xl font-bold hidden" id="no_result"> No results found.</p>
+                </div>
+            </div>
+        </div>
+        <!-- skeleton for api loading -->
+        <template id="card_skeleton">
+            <div class="mt-10 ml-10">
+                <div class="main-item rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 w-40 h-52 flex justify-center items-center bg-white">  
+                    <div class="animated-background rounded-md h-[200px] w-40"></div>
+                  </div>
+                <div class="animated-background rounded-md w-32 h-3 mt-3 mb-3"></div>
+                <div class="animated-background rounded-md w-40 h-3 mt-3"></div>
+                <div class="animated-background rounded-md w-40 h-3 mt-3"></div>
+                <div class="animated-background rounded-md w-40 h-3 mt-3"></div>
+                <div class="animated-background rounded-md w-40 h-3 mt-3"></div>
+            </div>
+        </template>
+    </main>
+    <!-- footer -->
+    <footer></footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="../script.js" type="module"></script>
+</html>

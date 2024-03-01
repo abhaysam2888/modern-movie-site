@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/output.css">
+    <!-- tailwind cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Modern movie site</title>
+</head>
+<body class="bg-slate-950">
+    <div class="flex justify-center items-center space-x-20 flex-wrap">
+        <div class="flex flex-col justify-center items-center space-y-5 max-[768px]:mt-10">
+            <img src="../images/adventure.jpg" alt="movie-Front-img" class="w-52 h-64 object-cover" id="img_front">
+            <img src="../images/animation.jpg" alt="Movie-back-img" class="w-52 h-64 object-cover" id="img_back">
+        </div> 
+        <div class="flex flex-col justify-center items-center max-[767px]:pr-10 max-[440px]:w-full ">
+            <div class="space-y-3 mb-10 max-[440px]:w-[300px] max-[449px]:-ml-10">
+                <!-- titile -->
+            <div class="py-2 mt-10">
+                <p class="text-left max-[460px]:text-lg max-[460px]:font-normal px-5 text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Title :
+                    </span>
+                    <span id="titile" class="dark:text-white">
+                        Lorem, ipsum dolor.
+                    </span>
+                </p>
+            </div>
+            <!-- orignal title -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Original Title :
+                    </span>
+                    <span id="org_title" class="dark:text-white">
+                        Lorem, ipsum dolor.
+                    </span>
+                </p>
+            </div>
+            <!-- release date -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Release date :
+                    </span>
+                    <span id="rel_date" class="dark:text-white">
+                        12/34/2345
+                    </span>
+                </p>
+            </div>
+            <!-- overview -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium w-[30rem] max-[580px]:w-full">
+                    <span class="dark:text-[#f5deb3]">
+                        Description :
+                    </span>
+                    <span id="description" class="dark:text-white">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perferendis dicta, voluptatibus tempora omnis assumenda veritatis nobis aliquam ex harum!
+                    </span>
+                </p>
+            </div>
+            <!-- popularity -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Popularity :
+                    </span>
+                    <span id="popularity" class="dark:text-white">
+                        2.3
+                    </span>
+                </p>
+            </div>
+            <!-- vote count -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Vote count :
+                    </span>
+                    <span id="vote_count" class="dark:text-white">
+                        00
+                    </span>
+                </p>
+            </div>
+            <!-- vote  average-->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Vote average :
+                    </span>
+                    <span id="vote_average" class="dark:text-white">
+                        00
+                    </span>
+                </p>
+            </div>
+            <!-- language -->
+            <div class="py-2">
+                <p class="text-left px-5 max-[460px]:text-lg max-[460px]:font-normal text-xl font-medium">
+                    <span class="dark:text-[#f5deb3]">
+                        Language :
+                    </span>
+                    <span class="dark:text-white" id="lang">
+                        en
+                    </span>
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- main menu btn -->
+    <button class="dark:text-white w-full mt-10">
+        <a href="./index.html">
+            <p class="text-center">
+                <span class="bg-green-600 py-3 px-4 rounded-l-full rounded-r-full">
+                    Back main menu
+                </span>
+            </p>
+        </a>
+    </button>
+</body>
+
+<script>
+    let img_front = document.querySelector('#img_front')
+    let img_back = document.querySelector('#img_back')
+    let titile = document.querySelector('#titile')
+    let org_title = document.querySelector('#org_title')
+    let rel_date = document.querySelector('#rel_date')
+    let description = document.querySelector('#description')
+    let popularity = document.querySelector('#popularity')
+    let vote_count = document.querySelector('#vote_count')
+    let vote_average = document.querySelector('#vote_average')
+    let lang = document.querySelector('#lang')
+
+    img_front.src = `https://image.tmdb.org/t/p/w500${localStorage.getItem('front_img')}`
+    img_back.src = `https://image.tmdb.org/t/p/w500${localStorage.getItem('back_img')}`
+    titile.textContent = localStorage.getItem('title')
+    org_title.textContent = localStorage.getItem('org_title')
+    rel_date.textContent = localStorage.getItem('release_date')
+    description.textContent = localStorage.getItem('description')
+    popularity.textContent = localStorage.getItem('popularity')
+    vote_count.textContent = localStorage.getItem('vote_count')
+    vote_average.textContent = localStorage.getItem('vote_average')
+    lang.textContent = localStorage.getItem('lang')
+
+</script>
+</html>

@@ -9,7 +9,7 @@
   <a href="#installation">Installation</a> •
 </p>
 
-![Virtual Bank Screenshot](../images/Screenshot%202024-03-01%20124223.png)
+![Modern movie site Screenshot](./images/Screenshot%202024-03-01%20124223.png)
 
 ## Demo
 
@@ -31,7 +31,7 @@ Follow these steps to set up the Virtual Bank project locally:
 
 1. Clone this repository:
    ```shell
-   git clone 
+   git clone https://github.com/abhaysam2888/modern-movie-site.git
    
 2. Social media link:
 

@@ -1,4 +1,4 @@
-<h1 align="center">Moddern movie site</h1>
+<h1 align="center">Modern movie site</h1>
 <p align="center">
   <strong>A dynamic movie site where we see and search the movie through various genres.</strong>
 </p>

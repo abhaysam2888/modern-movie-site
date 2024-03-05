@@ -23,6 +23,8 @@ Check out the live demo of the Virtual Bank: [Live Demo](https://modern-movie-si
 
 - **Movie details**: Access your details, images of particular movie in another tab.
 
+- **Skeleton loading**: The application has feature of skeleton loading, ensuring a seamless experience of user.
+  
 - **Responsive Design**: The application is fully responsive, ensuring a seamless experience on both desktop and mobile devices.
 
 ## Installation

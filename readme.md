@@ -13,7 +13,7 @@
 
 ## Demo
 
-Check out the live demo of the Virtual Bank: [Live Demo](https://modern-movie-site.netlify.app/)
+Check out the live demo of the site: [Live Demo](https://modern-movie-site.netlify.app/)
 
 ## Features
 

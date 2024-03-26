@@ -288,32 +288,20 @@ function searchGenres(genreCard) {
         const fetchData = fetch(query)
 
         .then(response => {
-        // checking the response is ok or not
-        if (response.status == 200) {
+
+          // empty the skeleton div on change
           let skeleton_parent = document.querySelector('#skeleton_parent')
           skeleton_parent.innerHTML = ""
 
-          // hide the result
-          no_result.classList.add('hidden')
-
-          return response.json()
-        } else {
-          // empty the div if status change
-        let parent_div = document.querySelector('#suggestion_parent')
-        parent_div.innerHTML = "";
-        // empty the skeleton div on change
-        let skeleton_parent = document.querySelector('#skeleton_parent')
-          skeleton_parent.innerHTML = ""
-
-        // show the no result
-        no_result.classList.remove('hidden')
-      }
-    })
+          return response.json();
+        })
         .then(res => {
           // checking the result is or not
           if (res.results.length == 0) {
+            // show the no result
             no_result.classList.remove('hidden')
           } else {
+            // hide the result
             no_result.classList.add('hidden')
           }
           return cloneData(res.results)

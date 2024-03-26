@@ -242,18 +242,21 @@ function searchGenres(genreCard) {
     if (query.length > 0) fetchSearchApi(url); else alert('write something')
   })
 
+  // making the multiple skeleton 
+  function skeletonInit() {
+    let arr = [1,2,3,4,5,6,7,8,9,10]
+    let skeleton = document.querySelector('#card_skeleton')
+    arr.forEach(() => {
+    let cloneSkeleton = skeleton.content.cloneNode(true)
+    let skeleton_parent = document.querySelector('#skeleton_parent')
+    skeleton_parent.appendChild(cloneSkeleton)
+        })
+  }
   // making the skeleton loading
   function skeletonLoading() {
     // check the skeleton is loding or loaded
     if (document.addEventListener('DOMContentLoaded', () => {  
-      // make the clone of skeleton and append the parent box
-      let arr = [1,2,3,4,5,6,7,8,9,10]
-      arr.forEach((arr) => {
-        let skeleton = document.querySelector('#card_skeleton')
-        let cloneSkeleton = skeleton.content.cloneNode(true)
-        let skeleton_parent = document.querySelector('#suggestion_parent')
-        skeleton_parent.appendChild(cloneSkeleton)
-      })
+      skeletonInit()
     })) {
     } else {
       window.addEventListener('load', () => {
@@ -274,14 +277,7 @@ function searchGenres(genreCard) {
 
   // making a function to fetch api
   function fetchSearchApi(query) {  
-        let arr = [1,2,3,4,5,6,7,8,9,10]
-        let skeleton = document.querySelector('#card_skeleton')
-        arr.forEach(() => {
-        let cloneSkeleton = skeleton.content.cloneNode(true)
-        let skeleton_parent = document.querySelector('#skeleton_parent')
-        skeleton_parent.appendChild(cloneSkeleton)
-        })
-
+    skeletonInit()
         // select the results para
         let no_result = document.querySelector('#no_result')
         

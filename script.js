@@ -252,21 +252,15 @@ function searchGenres(genreCard) {
     skeleton_parent.appendChild(cloneSkeleton)
         })
   }
+
   // making the skeleton loading
-  function skeletonLoading() {
-    // check the skeleton is loding or loaded
-    if (document.addEventListener('DOMContentLoaded', () => {  
-      skeletonInit()
-    })) {
+    // check the dom is loding or loaded then load the skeleton is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => skeletonInit())
     } else {
-      window.addEventListener('load', () => {
-        // empty the parent box
-        let skeleton_parent = document.querySelector('#suggestion_parent')
-        skeleton_parent.innerHTML = ""
-      })
+      let skeleton_parent = document.querySelector('#suggestion_parent')
+      skeleton_parent.innerHTML = ""
     }
-  }
-  skeletonLoading()
 
   // making an call on api through window
  
@@ -281,14 +275,11 @@ function searchGenres(genreCard) {
         // select the results para
         let no_result = document.querySelector('#no_result')
         
-        const fetchData = fetch(query)
-
+        fetch(query)
         .then(response => {
-
           // empty the skeleton div on change
           let skeleton_parent = document.querySelector('#skeleton_parent')
           skeleton_parent.innerHTML = ""
-
           return response.json();
         })
         .then(res => {

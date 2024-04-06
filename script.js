@@ -253,17 +253,7 @@ function searchGenres(genreCard) {
         })
   }
 
-  // making the skeleton loading
-    // check the dom is loding or loaded then load the skeleton is loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => skeletonInit())
-    } else {
-      let skeleton_parent = document.querySelector('#suggestion_parent')
-      skeleton_parent.innerHTML = ""
-    }
-
   // making an call on api through window
- 
   window.addEventListener('load', () => {
     let url = `https://api.themoviedb.org/3/search/movie?query=new movies&api_key=${api_key}`
     fetchSearchApi(url)
